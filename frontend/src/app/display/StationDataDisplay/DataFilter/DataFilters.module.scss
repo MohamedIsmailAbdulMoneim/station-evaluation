@@ -1,0 +1,56 @@
+// StationDataForm.module.scss
+$primary-color: #007bff;
+$secondary-color: #0056b3;
+$border-radius: 12px;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+.form-container {
+  width: 90vw;
+  margin: 10px auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;
+
+  h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 5px;
+  }
+
+  .inputs-container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .input-group {
+    position: relative;
+    width: 100%;
+  }
+
+  .button {
+    width: 40%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(
+        50deg,
+        $secondary-color,
+        darken($secondary-color, 10%)
+      );
+      transform: scale(1.02);
+    }
+  }
+}
