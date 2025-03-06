@@ -5,7 +5,7 @@ import Select from '@/components/Ui/Select/Select';
 import { useEffect, useState } from 'react';
 
 const StationDataForm = ({ stations, governs, areas }) => {
-  const [formData, setFormData] = useState({
+  const [formInf, setFormInf] = useState({
     stationName: '',
     govName: '',
     areaName: '',
@@ -14,7 +14,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
   const changeHandler = (e) => {
     if (e.target.name === 'stationName')
       localStorage.setItem('station-name', e.target.value);
-    setFormData((old) => ({
+    setFormInf((old) => ({
       ...old,
       [e.target.name]: e.target.value,
     }));
@@ -22,7 +22,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
 
   useEffect(() => {
     const stationName = localStorage.getItem('station-name');
-    setFormData(stationName);
+    setFormInf(stationName);
   }, []);
 
   return (
@@ -34,7 +34,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
             label="المحافظة"
             name="govName"
             options={governs}
-            data={formData.govName}
+            data={formInf.govName}
           />
         </div>
 
@@ -44,7 +44,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
             label="المنطقة"
             name="areaName"
             options={areas}
-            data={formData.areaName}
+            data={formInf.areaName}
           />
         </div>
 
@@ -54,7 +54,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
             label="اسم المحطة"
             name="stationName"
             options={stations}
-            data={formData.stationName}
+            data={formInf.stationName}
           />
         </div>
       </div>

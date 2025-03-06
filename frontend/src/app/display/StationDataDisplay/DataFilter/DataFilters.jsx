@@ -6,7 +6,7 @@ import Select from '@/components/Ui/Select/Select';
 import { useEffect, useState } from 'react';
 
 const DataFilter = ({ stations, governs, areas, getData }) => {
-  const [formData, setFormData] = useState({
+  const [formInf, setFormInf] = useState({
     stationName: '',
     govName: '',
     areaName: '',
@@ -14,7 +14,7 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
   });
 
   const changeHandler = (e) => {
-    setFormData((old) => ({
+    setFormInf((old) => ({
       ...old,
       [e.target.name]: e.target.value,
     }));
@@ -29,7 +29,7 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
             label="المحافظة"
             name="govName"
             options={governs}
-            data={formData.govName}
+            data={formInf.govName}
           />
         </div>
 
@@ -39,7 +39,7 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
             label="المنطقة"
             name="areaName"
             options={areas}
-            data={formData.areaName}
+            data={formInf.areaName}
           />
         </div>
 
@@ -49,7 +49,7 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
             label="اسم المحطة"
             name="stationName"
             options={stations}
-            data={formData.stationName}
+            data={formInf.stationName}
           />
         </div>
         <div className={styles['input-group']}>
@@ -58,12 +58,12 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
             type="date"
             label="التاريخ"
             name="date"
-            data={formData.date}
+            data={formInf.date}
           />
         </div>
       </div>
       <button
-        onClick={() => getData(formData.stationName, formData.date)}
+        onClick={() => getData(formInf.stationName, formInf.date)}
         className={styles.button}
       >
         بحث
