@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const questions = require("./routes/questions");
 const stations = require("./routes/stations");
+const governorates = require("./routes/governorates");
+const areas = require("./routes/areas");
 const answers = require("./routes/answers");
 
 const { logMessage } = require("./utils/system.utils");
@@ -18,6 +20,8 @@ app.use(express.json());
 app.use(morgan(logLevel));
 app.use("/api/v1/questions", questions);
 app.use("/api/v1/stations", stations);
+app.use("/api/v1/areas", areas);
+app.use("/api/v1/governorates", governorates);
 app.use("/api/v1/answers", answers);
 
 app.listen(port, () => {
