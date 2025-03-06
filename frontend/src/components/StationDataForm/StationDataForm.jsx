@@ -22,7 +22,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
 
   useEffect(() => {
     const stationName = localStorage.getItem('station-name');
-    setFormInf(stationName);
+    setFormInf({ ...formInf, stationName });
   }, []);
 
   return (
