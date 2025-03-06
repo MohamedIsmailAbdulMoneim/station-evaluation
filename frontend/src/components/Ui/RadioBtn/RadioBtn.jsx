@@ -68,7 +68,18 @@ const Radio = ({
                 />
                 <label
                   htmlFor={`${name}_${option}_${index}`}
-                  className="custom-radio"
+                  className={`custom-radio ${
+                    selectedOption === option
+                      ? option === 'نعم'
+                        ? 'yes'
+                        : option === 'لا'
+                          ? 'no'
+                          : option === 'غير مطابق' ||
+                              option === 'غير قابل للتطبيق'
+                            ? 'not-matching'
+                            : ''
+                      : ''
+                  }`}
                 >
                   <span className="checkmark"></span>
                   {option}

@@ -35,6 +35,39 @@ export const getStations = async () => {
   }
 };
 
+export const getAreas = async () => {
+  noStore();
+  try {
+    const areasResponse = await fetch('http://localhost:3005/api/v1/areas');
+
+    if (!areasResponse.ok) throw new Error('error while fetching areas');
+
+    const { data: areas } = await areasResponse.json();
+
+    return areas;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getGovernorates = async () => {
+  noStore();
+  try {
+    const govensResponse = await fetch(
+      'http://localhost:3005/api/v1/governorates',
+    );
+
+    if (!govensResponse.ok)
+      throw new Error('error while fetching governorates');
+
+    const { data: governs } = await govensResponse.json();
+
+    return governs;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const insertAnswers = async (data, stationName) => {
   noStore();
 

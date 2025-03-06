@@ -5,7 +5,7 @@ import styles from './StationDataDisplay.module.scss';
 import DataFilter from './DataFilter/DataFilters';
 import Step from './Step/Step';
 
-const StationDataDisplay = ({ stations, getData }) => {
+const StationDataDisplay = ({ stations, governs, areas, getData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
   const [errors, setErrors] = useState('');
@@ -36,7 +36,12 @@ const StationDataDisplay = ({ stations, getData }) => {
 
   return (
     <>
-      <DataFilter stations={stations} getData={handleFetchData} />
+      <DataFilter
+        governs={governs}
+        stations={stations}
+        areas={areas}
+        getData={handleFetchData}
+      />
       <div className={styles.container}>
         <Step currentData={currentData} />
         {errors && <h1 style={{ color: 'red' }}>{errors}</h1>}

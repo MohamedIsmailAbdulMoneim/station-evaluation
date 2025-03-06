@@ -5,9 +5,11 @@ import Input from '@/components/Ui/Input/Input';
 import Select from '@/components/Ui/Select/Select';
 import { useEffect, useState } from 'react';
 
-const DataFilter = ({ stations, getData }) => {
+const DataFilter = ({ stations, governs, areas, getData }) => {
   const [formData, setFormData] = useState({
     stationName: '',
+    govName: '',
+    areaName: '',
     date: '',
   });
 
@@ -32,11 +34,23 @@ const DataFilter = ({ stations, getData }) => {
         </div>
 
         <div className={styles['input-group']}>
-          <Input onChange={changeHandler} label="المحافظة" name="gov" />
+          <Select
+            onChange={changeHandler}
+            label="المحافظة"
+            name="gov"
+            options={governs}
+            data={formData.govName}
+          />
         </div>
 
         <div className={styles['input-group']}>
-          <Input onChange={changeHandler} label="المنطقة" name="area" />
+          <Select
+            onChange={changeHandler}
+            label="المنطقة"
+            name="area"
+            options={areas}
+            data={formData.areaName}
+          />
         </div>
 
         <div className={styles['input-group']}>
