@@ -32,7 +32,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
           <Select
             onChange={changeHandler}
             label="المحافظة"
-            name={formData.govName}
+            name="govName"
             options={governs}
             data={formData.govName}
           />
@@ -42,7 +42,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
           <Select
             onChange={changeHandler}
             label="المنطقة"
-            name={formData.areaName}
+            name="areaName"
             options={areas}
             data={formData.areaName}
           />
@@ -52,7 +52,7 @@ const StationDataForm = ({ stations, governs, areas }) => {
           <Select
             onChange={changeHandler}
             label="اسم المحطة"
-            name={formData.stationName}
+            name="stationName"
             options={stations}
             data={formData.stationName}
           />

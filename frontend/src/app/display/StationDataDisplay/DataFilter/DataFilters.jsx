@@ -27,7 +27,7 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
           <Select
             onChange={changeHandler}
             label="المحافظة"
-            name="gov"
+            name="govName"
             options={governs}
             data={formData.govName}
           />
@@ -37,7 +37,7 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
           <Select
             onChange={changeHandler}
             label="المنطقة"
-            name="area"
+            name="areaName"
             options={areas}
             data={formData.areaName}
           />
