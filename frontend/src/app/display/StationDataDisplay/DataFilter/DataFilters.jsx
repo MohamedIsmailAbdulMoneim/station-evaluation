@@ -24,16 +24,6 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
     <div className={styles['form-container']}>
       <div className={styles['inputs-container']}>
         <div className={styles['input-group']}>
-          <Input
-            onChange={changeHandler}
-            type="date"
-            label="التاريخ"
-            name="date"
-            data={formData.date}
-          />
-        </div>
-
-        <div className={styles['input-group']}>
           <Select
             onChange={changeHandler}
             label="المحافظة"
@@ -60,6 +50,15 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
             name="stationName"
             options={stations}
             data={formData.stationName}
+          />
+        </div>
+        <div className={styles['input-group']}>
+          <Input
+            onChange={changeHandler}
+            type="date"
+            label="التاريخ"
+            name="date"
+            data={formData.date}
           />
         </div>
       </div>
