@@ -29,6 +29,8 @@ const StationEvalPage = ({ areas, insertAnswers, steps }) => {
     insertAnswers(stationEvaluation, stationName).then(() => {
       setIsLoading(false);
       setFormIsSubmitted(true);
+      localStorage.removeItem('station-evaluation');
+      localStorage.removeItem('station-name');
     });
   };
 

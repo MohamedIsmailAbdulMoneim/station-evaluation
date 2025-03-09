@@ -239,9 +239,14 @@ $transition-speed: 0.3s ease-in-out;
   }
 }
 
+.invalid {
+  border: 1px solid red !important;
+  border-radius: 4px;
+}
+
 .error {
   color: red;
-  font-size: 12px;
+  font-size: 0.875rem;
   margin-top: 4px;
 }
 

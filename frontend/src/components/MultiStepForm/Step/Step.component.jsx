@@ -17,6 +17,7 @@ const Step = ({
   const [insertedData, setInsertedData] = useState({});
   const [errors, setErrors] = useState({}); // Track validation errors
   const questionContainerRef = useRef(null);
+  const inputRefs = useRef({}); // Refs for input fields
 
   const scrollToTop = () => {
     if (questionContainerRef.current) {
@@ -40,6 +41,18 @@ const Step = ({
     });
 
     setErrors(newErrors);
+
+    // Scroll to the first error
+    if (Object.keys(newErrors).length > 0) {
+      const firstErrorId = Object.keys(newErrors)[0];
+      if (inputRefs.current[firstErrorId]) {
+        inputRefs.current[firstErrorId].scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
+    }
+
     return Object.keys(newErrors).length === 0;
   };
 
@@ -121,6 +134,7 @@ const Step = ({
                   errors[question.question_id] ? styles.invalid : ''
                 }`}
                 key={question.question_id}
+                ref={(el) => (inputRefs.current[question.question_id] = el)} // Assign ref
               >
                 <div className={styles.questionHeader}>
                   <span className={styles.questionNumber}>{index + 1}</span>
@@ -143,6 +157,7 @@ const Step = ({
                   errors[question.question_id] ? styles.invalid : ''
                 }`}
                 key={question.question_id}
+                ref={(el) => (inputRefs.current[question.question_id] = el)} // Assign ref
               >
                 <div className={styles.questionHeader}>
                   <span className={styles.questionNumber}>{index + 1}</span>

@@ -16,6 +16,87 @@ $number-color: #3498db;
   height: 100%;
 }
 
+.pageJumpContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pageInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 150px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $secondary-color;
+    outline: none;
+  }
+}
+
+.pageJumpButton {
+  background: $secondary-color;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: darken($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: #a0a0a0;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  .paginationButton {
+    background: $secondary-color;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: darken($secondary-color, 10%);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      background: #a0a0a0;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $primary-color;
+  }
+}
+
 .stationCard {
   background: white;
   padding: 20px;
@@ -98,39 +179,17 @@ $number-color: #3498db;
   }
 }
 
-/* Pagination Styles */
-.pagination {
+/* Error Message Styling */
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* Spinner Styling (if needed) */
+.spinner {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
-  margin-top: 20px;
-
-  button {
-    background: $secondary-color;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    &:hover {
-      background: darken($secondary-color, 10%);
-      transform: translateY(-2px);
-    }
-
-    &:disabled {
-      background: #a0a0a0;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-  }
-
-  span {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: $primary-color;
-  }
+  height: 100vh;
 }

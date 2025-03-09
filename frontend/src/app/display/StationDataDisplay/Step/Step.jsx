@@ -5,10 +5,12 @@ const Step = ({ currentData }) => {
     ...new Set(currentData.map((row) => row.question_sub_sort.trim())),
   ];
 
+  console.log(currentData);
+
   return subTitles.map((subTitle, index) => {
     // Filter details for this subtitle
     const subTitleDetails = currentData.filter(
-      (detail) => detail.question_sub_sort === subTitle,
+      (detail) => detail.question_sub_sort.trim() === subTitle,
     );
 
     return (
