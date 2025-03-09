@@ -31,6 +31,7 @@ const StationDataForm = ({ areas }) => {
   useEffect(() => {
     const areaName = formInf.areaName;
     if (areaName) {
+      setGoverns([]);
       getGovernorates(areaName).then((data) => {
         setGoverns(data);
       });
@@ -40,6 +41,7 @@ const StationDataForm = ({ areas }) => {
   useEffect(() => {
     const govName = formInf.govName;
     if (govName) {
+      setStations([]);
       getStations(govName).then((data) => {
         setStations(data);
       });

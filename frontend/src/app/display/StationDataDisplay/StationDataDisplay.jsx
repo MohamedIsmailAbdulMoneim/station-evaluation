@@ -51,12 +51,14 @@ const StationDataDisplay = ({ areas, getData }) => {
   };
 
   const handleGetGov = (areaId) => {
+    setGoverns([]);
     getGovernorates(areaId).then((data) => {
       setGoverns(data);
     });
   };
 
   const handleGetStation = (govId) => {
+    setStations([]);
     getStations(govId).then((data) => {
       setStations(data);
     });
@@ -69,6 +71,8 @@ const StationDataDisplay = ({ areas, getData }) => {
       setIsLoading(false);
       return;
     }
+
+    setErrors('');
     getData(stationName, date).then(({ data }) => {
       setData(data ?? []);
       setIsLoading(false);
