@@ -9,9 +9,8 @@ import StationEvalPage from './StationEvalPage';
 
 const HomePage = async ({ searchParams }) => {
   const questions = await getQuestions();
-  const stations = await getStations();
+
   const areas = await getAreas();
-  const governs = await getGovernorates();
 
   const steps = [
     {
@@ -138,9 +137,7 @@ const HomePage = async ({ searchParams }) => {
   return (
     <>
       <StationEvalPage
-        stations={stations}
         areas={areas}
-        governs={governs}
         steps={steps}
         insertAnswers={insertAnswers}
       />

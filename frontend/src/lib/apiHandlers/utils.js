@@ -18,11 +18,11 @@ export const getQuestions = async () => {
   }
 };
 
-export const getStations = async () => {
+export const getStations = async (govId) => {
   noStore();
   try {
     const stationsResponse = await fetch(
-      'http://localhost:3005/api/v1/stations',
+      `http://localhost:3005/api/v1/stations?govId=${govId}`,
     );
 
     if (!stationsResponse.ok) throw new Error('error while fetching stations');
@@ -50,11 +50,11 @@ export const getAreas = async () => {
   }
 };
 
-export const getGovernorates = async () => {
+export const getGovernorates = async (areaId) => {
   noStore();
   try {
     const govensResponse = await fetch(
-      'http://localhost:3005/api/v1/governorates',
+      `http://localhost:3005/api/v1/governorates?areaId=${areaId}`,
     );
 
     if (!govensResponse.ok)

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Step from './Step/Step.component';
 
 const MultiStepForm = ({ steps, onSubmit, errors }) => {
-  const [step, setStep] = useState(17);
+  const [step, setStep] = useState(1);
 
   const nextStep = () =>
     setStep((prev) => {

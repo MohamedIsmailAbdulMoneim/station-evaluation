@@ -8,13 +8,7 @@ import correct from '@/assets/correct.svg';
 import Image from 'next/image';
 import Spinner from '@/components/Ui/Spinner/Spinner';
 
-const StationEvalPage = ({
-  stations,
-  governs,
-  areas,
-  insertAnswers,
-  steps,
-}) => {
+const StationEvalPage = ({ areas, insertAnswers, steps }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
   const [errors, setErrors] = useState('');
@@ -53,7 +47,7 @@ const StationEvalPage = ({
     </div>
   ) : (
     <>
-      <StationDataForm stations={stations} governs={governs} areas={areas} />
+      <StationDataForm areas={areas} />
       <MultiStepForm steps={steps} onSubmit={submitForm} errors={errors} />
     </>
   );

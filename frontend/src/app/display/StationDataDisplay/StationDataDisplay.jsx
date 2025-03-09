@@ -4,11 +4,14 @@ import { useState } from 'react';
 import styles from './StationDataDisplay.module.scss';
 import DataFilter from './DataFilter/DataFilters';
 import Step from './Step/Step';
+import { getStations, getGovernorates } from '@/lib/apiHandlers/utils';
 
-const StationDataDisplay = ({ stations, governs, areas, getData }) => {
+const StationDataDisplay = ({ areas, getData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
   const [errors, setErrors] = useState('');
+  const [governs, setGoverns] = useState('');
+  const [stations, setStations] = useState('');
 
   const reportPageNumbers = [
     ...new Set(data?.map((item) => item.report_page_number)),
@@ -34,11 +37,25 @@ const StationDataDisplay = ({ stations, governs, areas, getData }) => {
     getData(stationName, date).then(({ data }) => setData(data ?? []));
   };
 
+  const handleGetGov = (areaId) => {
+    getGovernorates(areaId).then((data) => {
+      setGoverns(data);
+    });
+  };
+
+  const handleGetStation = (govId) => {
+    getStations(govId).then((data) => {
+      setStations(data);
+    });
+  };
+
   return (
     <>
       <DataFilter
-        governs={governs}
-        stations={stations}
+        handleGetGov={handleGetGov}
+        handleGetStation={handleGetStation}
+        governs={governs || []}
+        stations={stations || []}
         areas={areas}
         getData={handleFetchData}
       />

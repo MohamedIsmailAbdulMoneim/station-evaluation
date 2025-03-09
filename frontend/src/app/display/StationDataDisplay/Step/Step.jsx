@@ -5,26 +5,30 @@ const Step = ({ currentData }) => {
     ...new Set(currentData.map((row) => row.question_sub_sort.trim())),
   ];
 
-  console.log(subTitles);
+  return subTitles.map((subTitle, index) => {
+    // Filter details for this subtitle
+    const subTitleDetails = currentData.filter(
+      (detail) => detail.question_sub_sort === subTitle,
+    );
 
-  return subTitles.map((subTitle, index) => (
-    <div key={index} className={styles.stationCard}>
-      <h2 className={styles.stationName}>{subTitle}</h2>
-      {/* <p className={styles.location}>{station.location}</p> */}
-      <div className={styles.details}>
-        {currentData
-          .filter((detail) => detail.question_sub_sort === subTitle)
-          .map((detail, i) => (
+    return (
+      <div key={index} className={styles.stationCard}>
+        <h2 className={styles.stationName}>{subTitle}</h2>
+        {/* <p className={styles.location}>{station.location}</p> */}
+        <div className={styles.details}>
+          {subTitleDetails.map((detail, i) => (
             <div key={i}>
-              <p>{detail.question}</p>
+              <p className={styles.question}>
+                <span className={styles.questionNumber}>{i + 1}</span>
+                {detail.question}
+              </p>
               <span>{detail.data}</span>
             </div>
           ))}
+        </div>
       </div>
-    </div>
-  ));
-
-  return <></>;
+    );
+  });
 };
 
 export default Step;

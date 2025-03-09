@@ -114,7 +114,7 @@ const Step = ({
         </div>
 
         <div>
-          {stepData.questions.map((question) =>
+          {stepData.questions.map((question, index) =>
             question.question_type === 'option' ? (
               <div
                 className={`${styles['question-container']} ${
@@ -122,14 +122,17 @@ const Step = ({
                 }`}
                 key={question.question_id}
               >
-                <Radio
-                  name={question.question_id}
-                  onChange={handleChange}
-                  options={question.options.split(',')}
-                  label={question.question}
-                  data={insertedData[question.question_id]}
-                  containOther={question.options.split(',').includes('other')}
-                />
+                <div className={styles.questionHeader}>
+                  <span className={styles.questionNumber}>{index + 1}</span>
+                  <Radio
+                    name={question.question_id}
+                    onChange={handleChange}
+                    options={question.options.split(',')}
+                    label={question.question}
+                    data={insertedData?.[question.question_id] ?? ''}
+                    containOther={question.options.split(',').includes('other')}
+                  />
+                </div>
                 {errors[question.question_id] && (
                   <p className={styles.error}>{errors[question.question_id]}</p>
                 )}
@@ -141,14 +144,17 @@ const Step = ({
                 }`}
                 key={question.question_id}
               >
-                <Input
-                  onChange={handleChange}
-                  label={question.question}
-                  name={question.question_id}
-                  placeholder={question.question}
-                  className={styles['input-field']}
-                  data={insertedData[question.question_id]}
-                />
+                <div className={styles.questionHeader}>
+                  <span className={styles.questionNumber}>{index + 1}</span>
+                  <Input
+                    onChange={handleChange}
+                    label={question.question}
+                    name={question.question_id}
+                    placeholder={question.question}
+                    className={styles['input-field']}
+                    data={insertedData?.[question.question_id] ?? ''}
+                  />
+                </div>
                 {errors[question.question_id] && (
                   <p className={styles.error}>{errors[question.question_id]}</p>
                 )}
@@ -178,6 +184,10 @@ const Step = ({
           )}
         </div>
         {stationNull && <h1 style={{ color: 'red' }}>{stationNull}</h1>}
+
+        <div className={styles.pageCounter}>
+          Page {step} of {totalSteps}
+        </div>
       </div>
     </div>
   );

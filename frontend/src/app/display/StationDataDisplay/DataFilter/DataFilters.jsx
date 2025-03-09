@@ -3,9 +3,16 @@
 import styles from './DataFilters.module.scss';
 import Input from '@/components/Ui/Input/Input';
 import Select from '@/components/Ui/Select/Select';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const DataFilter = ({ stations, governs, areas, getData }) => {
+const DataFilter = ({
+  handleGetGov,
+  handleGetStation,
+  stations,
+  governs,
+  areas,
+  getData,
+}) => {
   const [formInf, setFormInf] = useState({
     stationName: '',
     govName: '',
@@ -14,6 +21,8 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
   });
 
   const changeHandler = (e) => {
+    if (e.target.name === 'areaName') handleGetGov(e.target.value);
+    if (e.target.name === 'govName') handleGetStation(e.target.value);
     setFormInf((old) => ({
       ...old,
       [e.target.name]: e.target.value,
@@ -26,20 +35,20 @@ const DataFilter = ({ stations, governs, areas, getData }) => {
         <div className={styles['input-group']}>
           <Select
             onChange={changeHandler}
-            label="المحافظة"
-            name="govName"
-            options={governs}
-            data={formInf.govName}
+            label="المنطقة"
+            name="areaName"
+            options={areas}
+            data={formInf.areaName}
           />
         </div>
 
         <div className={styles['input-group']}>
           <Select
             onChange={changeHandler}
-            label="المنطقة"
-            name="areaName"
-            options={areas}
-            data={formInf.areaName}
+            label="المحافظة"
+            name="govName"
+            options={governs}
+            data={formInf.govName}
           />
         </div>
 
