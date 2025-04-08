@@ -10,7 +10,7 @@ const getQuestionsController = async (req, res) => {
   try {
     client = await pool.connect();
     const query = `
-      select * from questions ORDER BY question_id ASC
+      select * from questions ORDER BY question_id DESC
       `;
 
     logMessage("Creating query to get questions", "Success", "Info", {
